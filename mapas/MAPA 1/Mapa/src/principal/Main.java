@@ -37,8 +37,10 @@ testes devem ser fictícios.
 
 public class Main {
     public static void main(String[] args) {
-        Evento e = new Evento();
-        e.venderIngresso();
-        e.mostrarIngressosVendidos();
+        Evento e1 = new Evento();
+        e1.venderIngresso();
+        e1.venderIngresso();
+        e1.venderIngresso();
+        e1.mostrarIngressosVendidos();
     }
 }

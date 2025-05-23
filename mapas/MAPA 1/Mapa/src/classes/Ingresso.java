@@ -1,5 +1,6 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 public class Ingresso {
@@ -12,7 +13,7 @@ public class Ingresso {
     public Ingresso(Evento evento) {
         this.nome = JOptionPane.showInputDialog("Informe o nome do comprador");
         this.cpf  = JOptionPane.showInputDialog("Informe o cpf");
-        this.categoria = CategoriaIngresso.valueOf(JOptionPane.showInputDialog("Escolha: \nPista \nVip \nCamarote"));
+        this.categoria = CategoriaIngresso.valueOf(JOptionPane.showInputDialog("Escolha: \nPISTA \nVIP \nCAMAROTE"));
         this.evento = evento;
     }
     
@@ -29,14 +30,16 @@ public class Ingresso {
         return ValorFinal;
     }
     
-    public void mostraResumo() {
+    public String mostraResumo() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String msg = "Nome(Dono): " + this.nome + "\nCPF: " + this.cpf + "\nEvento(Nome): ";
-        msg += this.evento.getNome() + "\nData: " + this.evento.getData();
-        JOptionPane.showMessageDialog(null, msg);
+        msg += this.evento.getNome() + "\nData: " + sdf.format(this.evento.getData()) + "\n";
+        msg += this.imprimirValorIngresso();
+        return msg;
     }
     
     public String imprimirValorIngresso() {
-        String msg = "Ingresso Tipo: " + this.categoria + "\nValor Final: " + this.calcularValorIngresso();
+        String msg = "Ingresso Tipo: " + this.categoria + "\nValor Final: " + this.calcularValorIngresso() + "\n\n";
         return msg;
     }
 }
